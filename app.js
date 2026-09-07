@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import 'dotenv/config';
-import sequelize from './src/config/database.js';
+import sequelize from './src/config/db.js';
 
 import './src/models/user.model.js';
 import './src/models/profile.model.js';

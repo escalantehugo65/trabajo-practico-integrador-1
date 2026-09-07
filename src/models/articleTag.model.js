@@ -1,15 +1,16 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/database.js";
+import sequelize from "../config/db.js";
 
-const ArticleTag = sequelize.define("ArticleTag", {
+const Article = sequelize.define("Article", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    article_id: { type: DataTypes.INTEGER, allowNull: false },
-    tag_id: { type: DataTypes.INTEGER, allowNull: false }
+    title: { type: DataTypes.STRING(100), allowNull: false },
+    content: { type: DataTypes.TEXT, allowNull: false },
+    user_id: { type: DataTypes.INTEGER, allowNull: false }
 }, {
-    tableName: "article_tags",
+    tableName: "articles",
     timestamps: true,
     createdAt: "created_at",
-    updatedAt: "updated_at"
+    updated_at: "updated_at"
 });
 
-export default ArticleTag;
+export default Article;

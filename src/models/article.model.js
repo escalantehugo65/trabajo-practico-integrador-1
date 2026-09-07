@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/database.js";
-import User from "./user.model.js";
+import sequelize from "../config/db.js";
 import Tag from "./tag.model.js";
 import ArticleTag from "./articleTag.model.js";
 
@@ -18,7 +17,7 @@ const Article = sequelize.define("Article", {
     updatedAt: "updated_at"
 });
 
-Article.belongsTo(User, { foreignKey: "user_id", as: "author" });
-Article.belongsToMany(Tag, { through: ArticleTag, foreignKey: "article_id", otherKey: "tag_id", as: "tags", onDelete: "CASCADE" });
+//Article.belongsTo(User, { foreignKey: "user_id", as: "author" });
+//Article.belongsToMany(Tag, { through: ArticleTag, foreignKey: "article_id", otherKey: "tag_id", as: "tags", onDelete: "CASCADE" });
 
 export default Article;

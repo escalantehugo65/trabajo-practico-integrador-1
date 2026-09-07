@@ -1,7 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/database.js";
-import Article from "./article.model.js";
-import ArticleTag from "./articleTag.model.js";
+import sequelize from "../config/db.js";
 
 const Tag = sequelize.define("Tag", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -10,9 +8,7 @@ const Tag = sequelize.define("Tag", {
     tableName: "tags",
     timestamps: true,
     createdAt: "created_at",
-    updatedAt: "updated_at"
+    updated_at: "updated_at"
 });
-
-Tag.belongsToMany(Article, { through: ArticleTag, foreignKey: "tag_id", otherKey: "article_id", as: "articles" });
 
 export default Tag;

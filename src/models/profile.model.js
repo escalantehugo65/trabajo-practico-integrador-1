@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/database.js";
-import User from "./user.model.js";
+import sequelize from "../config/db.js";
 
 const Profile = sequelize.define("Profile", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -17,6 +16,6 @@ const Profile = sequelize.define("Profile", {
     updatedAt: "updated_at"
 });
 
-Profile.belongsTo(User, { foreignKey: "user_id", as: "user" });
+//Profile.belongsTo(User, { foreignKey: "user_id", as: "user" });
 
 export default Profile;
