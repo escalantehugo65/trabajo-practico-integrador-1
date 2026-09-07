@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import 'dotenv/config';
 import sequelize from './src/config/database.js';
 
 import './src/models/user.model.js';
@@ -9,6 +10,10 @@ import './src/models/article.model.js';
 import './src/models/tag.model.js';
 import './src/models/articleTag.model.js';
 
+import authRoutes from './src/routes/auth.routes.js';
+import tagRoutes from './src/routes/tag.routes.js';
+import articleRoutes from './src/routes/article.routes.js';
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -16,8 +21,12 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
+app.use('/api/auth', authRoutes);
+app.use('/api/tags', tagRoutes);
+app.use('/api/articles', articleRoutes);
+
 app.get('/', (_req, res) => {
-    res.send('Servidor y Modelos del Blog listos');
+    res.send('Servidor y API del Blog listos');
 });
 
 const startServer = async () => {
